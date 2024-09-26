@@ -33,7 +33,9 @@ A command line tool has also been created that loads real csv file data and runs
 
 ```npm start average-rent {region}```
 
-```npm start rent-per-tenant {propertyId}```
+```npm start rent-per-tenant {propertyId} pounds```
+
+```npm start rent-per-tenant {propertyId} pence```
 
 ```npm start validate-postcodes```
 
@@ -43,7 +45,9 @@ e.g:
 
 ```npm start average-rent ENGLAND```
 
-```npm start rent-per-tenant p_1100```
+```npm start rent-per-tenant p_1100 pounds```
+
+```npm start rent-per-tenant p_1100 pence```
 
 ```npm start validate-postcodes```
 

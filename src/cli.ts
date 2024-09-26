@@ -71,7 +71,8 @@ async function main() {
                 }
                 const inPounds = args[2] !== 'pence';
                 const rentPerTenant = propertyService.getRentPerTenant(input, inPounds);
-                console.log(`Rent per tenant: £${rentPerTenant.toFixed(2)}`);
+                inPounds ? console.log(`Rent per tenant: £${rentPerTenant.toFixed(2)}`) :
+                console.log(`Rent per tenant: ${rentPerTenant} pence`);
                 break;
 
             case 'validate-postcodes':
