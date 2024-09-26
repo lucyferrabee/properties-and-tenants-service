@@ -13,7 +13,9 @@ A command line tool has also been created that loads real csv file data and runs
 
 1. Clone the repository:
 
-```git clone https://github.com/lucyferrabee/properties-and-tenants-sorter.git cd properties-and-tenants-sorter```
+```git clone https://github.com/lucyferrabee/properties-and-tenants-sorter.git```
+
+```cd properties-and-tenants-sorter```
 
 2. Install dependencies:
 
@@ -30,15 +32,21 @@ A command line tool has also been created that loads real csv file data and runs
 5. Command line commands for running real data:
 
 ```npm start average-rent {region}```
+
 ```npm start rent-per-tenant {propertyId}```
+
 ```npm start validate-postcodes```
+
 ```npm start property-status {propertyId}```
 
 e.g:
 
 ```npm start average-rent ENGLAND```
+
 ```npm start rent-per-tenant p_1100```
+
 ```npm start validate-postcodes```
+
 ```npm start property-status p_1037```
 
 ## Tasks
