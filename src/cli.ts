@@ -32,6 +32,7 @@ function loadCSVData<T>(filePath: string): Promise<T[]> {
 
 // TODO: make this less messy
 // TODO: log errors in a table
+// TODO: hold data in a secure database
 const args = process.argv.slice(2);
 const command = args[0];
 const input = args[1];
@@ -60,7 +61,7 @@ async function main() {
                     break;
                 }
                 const avgRent = propertyService.getAverageRentByRegion(input);
-                console.log(`Average rent in ${input}: £${avgRent / 100}`);
+                console.log(`Average rent in ${input}: £${avgRent}`);
                 break;
 
             case 'rent-per-tenant':
@@ -70,7 +71,7 @@ async function main() {
                 }
                 const inPounds = args[2] !== 'pence';
                 const rentPerTenant = propertyService.getRentPerTenant(input, inPounds);
-                console.log(`Rent per tenant: £${rentPerTenant}`);
+                console.log(`Rent per tenant: £${rentPerTenant.toFixed(2)}`);
                 break;
 
             case 'validate-postcodes':

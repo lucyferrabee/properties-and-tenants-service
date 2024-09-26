@@ -9,19 +9,27 @@ interface Property {
     tenants: Tenant[];
 }
 
+interface Tenant {
+    id: string,
+    name: string,
+}
+
 export class PropertyService {
     constructor(private properties: Property[]) {}
 
-// Task 1: Calculate average rent for a region
 getAverageRentByRegion(region: string): number {
     const propertiesInRegion = this.properties.filter(prop => prop.region === region);
+    
     if (propertiesInRegion.length === 0) throw new Error("Region not found");
-
-    const totalRent = propertiesInRegion.reduce((sum, prop) => sum + prop.monthlyRentPence, 0);
-    return totalRent / propertiesInRegion.length;
+    
+    const totalRentInPence = propertiesInRegion.reduce((sum, prop) => sum + prop.monthlyRentPence, 0);
+    const totalRentInPounds = totalRentInPence / 100;
+    
+    const averageRent = totalRentInPounds / propertiesInRegion.length;
+        
+    return Math.round(averageRent);
 }
 
-// Task 2: Calculate rent per tenant for a property
 getRentPerTenant(propertyId: string, inPounds = true): number {
     const property = this.properties.find(prop => prop.id === propertyId);
     if (!property) throw new Error("Property not found");
@@ -29,11 +37,10 @@ getRentPerTenant(propertyId: string, inPounds = true): number {
     const numTenants = property.tenants.length;
     if (numTenants === 0) throw new Error("No tenants");
 
-    const rentPerTenant = property.monthlyRentPence / numTenants;
-    return inPounds ? rentPerTenant / 100 : rentPerTenant;
+    const rentPerTenant = property.monthlyRentPence / (numTenants * 100);
+    return inPounds ? parseFloat(rentPerTenant.toFixed(2)) : Math.round(rentPerTenant * 100);
 }
 
-// Task 3: Validate UK postcodes (simple regex)
 validatePostcodes(): string[] {
     const ukPostcodeRegex = /^[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}$/i;
     return this.properties
@@ -41,7 +48,6 @@ validatePostcodes(): string[] {
         .map(prop => prop.id);
 }
 
-// Task 4: Get the status of a property
 getPropertyStatus(propertyId: string): string {
     const property = this.properties.find(prop => prop.id === propertyId);
     if (!property) throw new Error("Property not found");

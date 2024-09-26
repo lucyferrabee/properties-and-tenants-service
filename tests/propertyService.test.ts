@@ -11,11 +11,11 @@ describe('PropertyService', () => {
     const service = new PropertyService(mockProperties);
 
     test('calculates average rent by region for multiple properties', () => {
-        expect(service.getAverageRentByRegion('ENGLAND')).toBe(178800);
+        expect(service.getAverageRentByRegion('ENGLAND')).toBe(1788);
     });
 
     test('calculates average rent by region for one property', () => {
-        expect(service.getAverageRentByRegion('WALES')).toBe(53400);
+        expect(service.getAverageRentByRegion('WALES')).toBe(534);
     });
 
     test('throws error for 0 properties in a region', () => {
@@ -25,7 +25,7 @@ describe('PropertyService', () => {
     test('calculates rent per tenant in pounds', () => {
         expect(service.getRentPerTenant('1')).toBe(1234);
         expect(() => service.getRentPerTenant('2')).toThrow("No tenants");
-        expect(service.getRentPerTenant('3')).toBe(780.6666666666667);
+        expect(service.getRentPerTenant('3')).toBe(780.67);
     });
 
     test('validates invalid postcodes', () => {
