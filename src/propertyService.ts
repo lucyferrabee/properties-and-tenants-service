@@ -26,11 +26,11 @@ getRentPerTenant(propertyId: string, inPounds = true): number {
     const property = this.properties.find(prop => prop.id === propertyId);
     if (!property) throw new Error("Property not found");
 
-    const numTenants = property.capacity;
+    const numTenants = property.tenants.length;
     if (numTenants === 0) throw new Error("No tenants");
 
     const rentPerTenant = property.monthlyRentPence / numTenants;
-    return inPounds ? rentPerTenant : rentPerTenant * 100;
+    return inPounds ? rentPerTenant / 100 : rentPerTenant;
 }
 
 // Task 3: Validate UK postcodes (simple regex)
@@ -47,9 +47,9 @@ getPropertyStatus(propertyId: string): string {
     if (!property) throw new Error("Property not found");
 
     const currentDate = new Date();
-    if (property.capacity === 0) return "PROPERTY_VACANT";
+    if (property.tenants.length === 0) return "PROPERTY_VACANT";
     if (currentDate > property.tenancyEndDate) return "PROPERTY_OVERDUE";
-    if (property.capacity < property.capacity) return "PARTIALLY_VACANT";
+    if (property.tenants.length < property.capacity) return "PARTIALLY_VACANT";
     return "PROPERTY_ACTIVE";
 }
 }
