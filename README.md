@@ -1,4 +1,4 @@
-# Properties and Tenants Sorter
+# Properties and Tenants Service
 
 ## About
 This is a simple project that handles data relating to tenants and properties.
@@ -13,9 +13,9 @@ A command line tool has also been created that loads real csv file data and runs
 
 1. Clone the repository:
 
-```git clone https://github.com/lucyferrabee/properties-and-tenants-sorter.git```
+```git clone https://github.com/lucyferrabee/properties-and-tenants-service.git```
 
-```cd properties-and-tenants-sorter```
+```cd properties-and-tenants-service```
 
 2. Install dependencies:
 
