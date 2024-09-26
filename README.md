@@ -13,7 +13,7 @@ A command line tool has also been created that loads real csv file data and runs
 
 1. Clone the repository:
 
-```git clone https://github.com/lucyferrabee/properties-and-tenants-service.git```
+```git clone git@github.com:lucyferrabee/properties-and-tenants-service.git```
 
 ```cd properties-and-tenants-service```
 
